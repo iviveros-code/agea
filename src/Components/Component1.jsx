@@ -8,31 +8,32 @@ import axios from "axios";
 export default function Component1() {
   const [resultado, setResultado] = useState([]);
 
-  // const dispatch = useDispatch();
-  // const videos = useSelector((store) => store);
+  const dispatch = useDispatch();
+  const videos = useSelector((store) => store.videosAgea.videoFiles);
 
+  console.log(videos);
   // setResultado(videos);
-  console.log(resultado);
-  useEffect(() => {
-    const data = async () => {
-      const res = await axios.get(
-        "http://api-editoriales.clarin.com/api/mobile/v2/oletv/home?offset=0&limit=10"
-      );
-      const array1 = res.data.items;
-      array1.forEach((items) => {
-        setResultado(items.videoFiles.mp4);
-      });
-    };
-    data();
-  }, []);
+  // console.log(resultado);
+  // useEffect(() => {
+  //   const data = async () => {
+  //     const res = await axios.get(
+  //       "http://api-editoriales.clarin.com/api/mobile/v2/oletv/home?offset=0&limit=10"
+  //     );
+  //     const array1 = res.data.items;
+  //     array1.forEach((items) => {
+  //       setResultado(items.videoFiles.mp4);
+  //     });
+  //   };
+  //   data();
+  // }, []);
 
   return (
     <>
       <View>
         <Text style={{ textAlign: "center" }}>Component 1</Text>
-        {/* <TouchableOpacity onPress={() => dispatch(obtenerVideosAction())}>
+        <TouchableOpacity onPress={() => dispatch(obtenerVideosAction())}>
           <Text>Obtener Videos</Text>
-        </TouchableOpacity> */}
+        </TouchableOpacity>
 
         <FlatList
           data={resultado}

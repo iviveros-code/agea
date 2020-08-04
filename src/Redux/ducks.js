@@ -31,7 +31,7 @@ export const obtenerVideosAction = () => async (dispatch, getState) => {
   const offset = getState().videosAgea.offset;
   try {
     const res = await axios.get(
-      `http://api-editoriales.clarin.com/api/mobile/v2/oletv/home?${offset}=0&limit=1`
+      `http://api-editoriales.clarin.com/api/mobile/v2/oletv/home?${offset}=0&limit=10`
     );
     const info = res.data.items;
     dispatch({
