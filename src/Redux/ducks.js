@@ -9,7 +9,7 @@ const SIGUIENTES_VIDEOS_EXITO = "SIGUIENTES_VIDEOS_EXITO";
 
 const dataInicial = {
   array: [],
-  offset: 0,
+  // offset: 0,
 };
 
 //reducer
@@ -28,10 +28,10 @@ export default function videosReducer(state = dataInicial, action) {
 //actions
 
 export const obtenerVideosAction = () => async (dispatch, getState) => {
-  const offset = getState().videosAgea.offset;
+  // const offset = getState().videosAgea.offset;
   try {
     const res = await axios.get(
-      `http://api-editoriales.clarin.com/api/mobile/v2/oletv/home?${offset}=0&limit=10`
+      "http://api-editoriales.clarin.com/api/mobile/v2/oletv/home"
     );
     const info = res.data.items;
     dispatch({
@@ -42,6 +42,8 @@ export const obtenerVideosAction = () => async (dispatch, getState) => {
     console.log(error);
   }
 };
+
+//?${offset}=0&limit=10
 
 export const siguienteVideosAccion = () => async (dispatch, getState) => {
   const offset = getState().videosAgea.offset;
