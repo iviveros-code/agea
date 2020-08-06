@@ -1,6 +1,7 @@
 import React from "react";
+import { TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import HomeScreen from "../HomeScreen";
 
 const HomeStack = createStackNavigator();
@@ -10,7 +11,7 @@ const HomeStackScreen = ({ navigation }) => {
     <HomeStack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#009387",
+          backgroundColor: "#88b400",
         },
         headerTintColor: "#fff",
         headerTitleStyle: {
@@ -24,24 +25,39 @@ const HomeStackScreen = ({ navigation }) => {
         options={{
           headerLeft: () => {
             return (
-              <Ionicons
-                name="ios-menu"
-                size={25}
-                backgroundColor="#009387"
-                onPress={() => navigation.openDrawer()}
-              />
+              <TouchableOpacity onPress={() => navigation.openDrawer()}>
+                <MaterialCommunityIcons
+                  name="menu"
+                  size={30}
+                  style={{ marginLeft: 20 }}
+                  color="#fff"
+                />
+              </TouchableOpacity>
             );
           },
           headerRight: () => {
             return (
-              <MaterialIcons
-                name="favorite"
-                size={25}
-                backgroundColor="#009387"
-                onPress={() => navigation.navigate("Lists")}
-              />
+              <TouchableOpacity onPress={() => navigation.navigate("Lists")}>
+                <MaterialCommunityIcons
+                  name="heart"
+                  size={30}
+                  style={{
+                    marginRight: 20,
+                  }}
+                  color="#e6253b"
+                />
+              </TouchableOpacity>
             );
           },
+          title: (
+            <Text
+              style={{
+                fontWeight: "400",
+              }}
+            >
+              Home -<Text style={{ fontWeight: "900" }}>Videos</Text>
+            </Text>
+          ),
         }}
       />
     </HomeStack.Navigator>

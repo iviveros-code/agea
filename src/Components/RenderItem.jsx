@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Video } from "expo-av";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // import Video from "react-native-video";
 
 const RenderItem = ({ item }) => {
+  const [favorite, setFavorite] = React.useState(false);
   const summaryFormat = item.summary;
   const cleanSummary = summaryFormat.replace(/<[^>]*>?/g, "");
 
@@ -15,7 +16,7 @@ const RenderItem = ({ item }) => {
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
-          flexWrap: "noWrap",
+
           alignItems: "center",
         }}
       >
@@ -23,13 +24,18 @@ const RenderItem = ({ item }) => {
           style={{
             fontWeight: "500",
             fontSize: 18,
-            textAlign: "center",
+
             margin: 5,
           }}
         >
           {item.title}
         </Text>
-        <MaterialIcons name="favorite-border" size={25} color="#ff0042" />
+        <MaterialCommunityIcons
+          name={favorite ? "heart" : "heart-outline"}
+          size={25}
+          color="#e6253b"
+          onPress={() => setFavorite(!favorite)}
+        />
       </View>
 
       <Text style={{ fontWeight: "300", fontSize: 16, margin: 3 }}>
