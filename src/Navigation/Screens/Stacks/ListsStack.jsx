@@ -1,8 +1,9 @@
 import React from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ListsDetailsScreen from "../ListsDetails";
+import colors from "../../../Styles/colors";
 
 const ListsStack = createStackNavigator();
 
@@ -11,9 +12,9 @@ const ListsStackScreen = ({ navigation }) => {
     <ListsStack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#88b400",
+          backgroundColor: colors.green,
         },
-        headerTintColor: "#fff",
+        headerTintColor: colors.white,
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -30,7 +31,7 @@ const ListsStackScreen = ({ navigation }) => {
                   name="menu"
                   size={30}
                   style={{ marginLeft: 20 }}
-                  color="#fff"
+                  color={colors.white}
                 />
               </TouchableOpacity>
             );
@@ -44,7 +45,7 @@ const ListsStackScreen = ({ navigation }) => {
                   style={{
                     marginRight: 20,
                   }}
-                  color="#fff"
+                  color={colors.white}
                 />
               </TouchableOpacity>
             );

@@ -9,7 +9,6 @@ const SIGUIENTES_VIDEOS_EXITO = "SIGUIENTES_VIDEOS_EXITO";
 
 const dataInicial = {
   array: [],
-  // offset: 0,
 };
 
 //reducer
@@ -33,7 +32,9 @@ export const obtenerVideosAction = () => async (dispatch, getState) => {
     const res = await axios.get(
       "http://api-editoriales.clarin.com/api/mobile/v2/oletv/home"
     );
+    // console.log("AAAAAAAAAAAAAAAA**********");
     const info = res.data.items;
+    // console.log(info);
     dispatch({
       type: OBTENER_VIDEOS_EXITO,
       payload: info,

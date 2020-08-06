@@ -3,6 +3,7 @@ import { TouchableOpacity, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import HomeScreen from "../HomeScreen";
+import colors from "../../../Styles/colors";
 
 const HomeStack = createStackNavigator();
 
@@ -11,9 +12,9 @@ const HomeStackScreen = ({ navigation }) => {
     <HomeStack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#88b400",
+          backgroundColor: colors.green,
         },
-        headerTintColor: "#fff",
+        headerTintColor: colors.white,
         headerTitleStyle: {
           fontWeight: "bold",
         },
@@ -30,7 +31,7 @@ const HomeStackScreen = ({ navigation }) => {
                   name="menu"
                   size={30}
                   style={{ marginLeft: 20 }}
-                  color="#fff"
+                  color={colors.white}
                 />
               </TouchableOpacity>
             );
@@ -44,7 +45,7 @@ const HomeStackScreen = ({ navigation }) => {
                   style={{
                     marginRight: 20,
                   }}
-                  color="#e6253b"
+                  color={colors.red}
                 />
               </TouchableOpacity>
             );

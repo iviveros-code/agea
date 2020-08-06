@@ -33,6 +33,27 @@ const globalStyles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  containerRender: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  title: {
+    fontWeight: "500",
+    fontSize: 18,
+    margin: 5,
+  },
+  subtitle: {
+    fontWeight: "300",
+    fontSize: 16,
+    margin: 3,
+  },
+  summary: {
+    fontWeight: "400",
+  },
+  containerFlatList: {
+    height: "90%",
+  },
 });
 
 export default globalStyles;

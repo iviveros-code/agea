@@ -2,47 +2,35 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Video } from "expo-av";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import globalStyles from "../Styles/globalStyles";
+import colors from "../Styles/colors";
+import AsyncStorage from "@react-native-community/async-storage";
+import shortid from "shortid";
 
 // import Video from "react-native-video";
 
-const RenderItem = ({ item }) => {
+const RenderItem = ({ item, resultado }) => {
   const [favorite, setFavorite] = React.useState(false);
+  const [guardarId, setGuardarId] = React.useState("");
+
   const summaryFormat = item.summary;
   const cleanSummary = summaryFormat.replace(/<[^>]*>?/g, "");
 
   return (
     <View style={{ margin: 20 }}>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-
-          alignItems: "center",
-        }}
-      >
-        <Text
-          style={{
-            fontWeight: "500",
-            fontSize: 18,
-
-            margin: 5,
-          }}
-        >
-          {item.title}
-        </Text>
+      <View style={globalStyles.containerRender}>
+        <Text style={globalStyles.title}>{item.title}</Text>
         <MaterialCommunityIcons
           name={favorite ? "heart" : "heart-outline"}
           size={25}
-          color="#e6253b"
+          color={colors.red}
           onPress={() => setFavorite(!favorite)}
         />
       </View>
 
-      <Text style={{ fontWeight: "300", fontSize: 16, margin: 3 }}>
-        {item.subtitle}
-      </Text>
+      <Text style={globalStyles.subtitle}>{item.subtitle}</Text>
 
-      <Text style={{ fontWeight: "400" }}>{cleanSummary}</Text>
+      <Text style={globalStyles.summary}>{cleanSummary}</Text>
 
       <Video
         source={{ uri: item.videoFiles.mp4 }}
@@ -58,6 +46,9 @@ const RenderItem = ({ item }) => {
           height: 300,
         }}
       />
+      <Text style={{ marginTop: 5, textAlign: "justify" }}>
+        Link: {item.videoFiles.mp4}
+      </Text>
 
       {/* <Video
         source={{ uri: item.videoFiles }} // Can be a URL or a local file.
