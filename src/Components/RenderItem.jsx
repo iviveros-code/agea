@@ -4,18 +4,19 @@ import { Video } from "expo-av";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import globalStyles from "../Styles/globalStyles";
 import colors from "../Styles/colors";
-import AsyncStorage from "@react-native-community/async-storage";
-import shortid from "shortid";
+import { useDispatch, useSelector } from "react-redux";
+import { favoritoVideosAccion } from "../Redux/ducks";
 
 // import Video from "react-native-video";
 
-const RenderItem = ({ item, resultado }) => {
+const RenderItem = ({ item }) => {
   const [favorite, setFavorite] = React.useState(false);
-  const [guardarId, setGuardarId] = React.useState("");
+  const dispatch = useDispatch();
 
   const summaryFormat = item.summary;
   const cleanSummary = summaryFormat.replace(/<[^>]*>?/g, "");
 
+  //,
   return (
     <View style={{ margin: 20 }}>
       <View style={globalStyles.containerRender}>
@@ -27,11 +28,8 @@ const RenderItem = ({ item, resultado }) => {
           onPress={() => setFavorite(!favorite)}
         />
       </View>
-
       <Text style={globalStyles.subtitle}>{item.subtitle}</Text>
-
       <Text style={globalStyles.summary}>{cleanSummary}</Text>
-
       <Video
         source={{ uri: item.videoFiles.mp4 }}
         rate={1.0}
@@ -49,16 +47,6 @@ const RenderItem = ({ item, resultado }) => {
       <Text style={{ marginTop: 5, textAlign: "justify" }}>
         Link: {item.videoFiles.mp4}
       </Text>
-
-      {/* <Video
-        source={{ uri: item.videoFiles }} // Can be a URL or a local file.
-        // ref={(ref) => {
-        //   this.player = ref;
-        // }} // Store reference
-        // onBuffer={this.onBuffer} // Callback when remote video is buffering
-        // onError={this.videoError} // Callback when video cannot be loaded
-        style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}
-      /> */}
     </View>
   );
 };

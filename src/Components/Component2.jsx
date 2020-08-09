@@ -1,12 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
 
-export default function Component2() {
+export default function Componente2() {
   return (
-    <>
-      <View>
-        <Text style={{ textAlign: "center" }}>Component 2</Text>
-      </View>
-    </>
+    <View>
+      <Text>Componente 2, favoritos desde Firebase</Text>
+    </View>
   );
 }
