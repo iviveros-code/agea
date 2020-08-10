@@ -4,24 +4,21 @@ import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Avatar, Title, Caption, Drawer } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import drawerStyles from "../Styles/drawerStyles";
+import * as firebase from "firebase";
 
 export function DrawerContent(props) {
   const { navigation } = props;
 
   const logOut = () => {
-    Alert.alert(
-      "Hola!! Soy una Alerta ",
-      "Seguro deseas apretarme??",
-      [
-        { text: "OK" },
-        {
-          text: "Cancel",
-
-          style: "cancel",
-        },
-      ],
-      { cancelable: false }
-    );
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        navigation.navigate("Login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

@@ -54,6 +54,11 @@ const globalStyles = StyleSheet.create({
   containerFlatList: {
     height: "90%",
   },
+  containerFavorites: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+  },
 });
 
 export default globalStyles;
